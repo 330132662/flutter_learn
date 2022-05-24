@@ -3,7 +3,9 @@
 A new Flutter project.
 
 ## Getting Started
-#### flutter 2.18
+#### flutter 2.8.1
+##  笔记
+Container -- child -- row/column -- children -- 回到Cotainer
 
 This project is a starting point for a Flutter application.
 
