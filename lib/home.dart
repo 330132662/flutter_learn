@@ -21,8 +21,18 @@ class HomeApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("flutter真是个奇怪的东西"),
         ),
-        body: const Center(
-          child: Text("第四次学习Flutter"),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("第四次学习Flutter  hhh"),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("蒙多，想去哪就去哪儿"))
+            ],
+          ),
         ),
       ),
     );
