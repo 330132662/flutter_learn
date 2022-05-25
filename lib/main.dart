@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter2_8_1/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      color: Colors.white,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -42,7 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-
+  /**
+   *  学习路由跳转
+   */
+  _jump(BuildContext context) {
+    print(":asdasdsd");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const HomeApp()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +138,30 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 240,
             fit: BoxFit.cover,
           ),
-          titleSection, buttonSection
+          titleSection, buttonSection,
+          Center(
+              child: Row(
+            children: [
+              Image.asset(
+                'image/lake.jpg',
+                width: 100,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
+              Container(
+                color: Colors.green,
+                width: 200,
+                height: 100,
+              ),
+            ],
+          )),
+          //https://www.jianshu.com/p/eebf7f7b1cfd
+          Container(
+            color: Colors.red,
+            width: 100,
+            height: 100,
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+          ),
 
           // https://flutter.cn/docs/development/ui/layout/tutorial 标题行
           /*const Text(
@@ -140,14 +172,14 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),*/
           // Text('跳转123'),
-          /*TextButton(
+          TextButton(
                 child: const Text("按钮：点我跳转"),
                 style: TextButton.styleFrom(
                     textStyle: const TextStyle(fontSize: 15)),
                 // onPressed: _jump(context))
                 onPressed: () {
                   _jump(context);
-                })*/
+                })
         ],
       ),
       /*floatingActionButton: FloatingActionButton(
