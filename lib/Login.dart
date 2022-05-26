@@ -25,11 +25,13 @@ class LoginState extends StatefulWidget {
 }
 
 class _LoginFul extends State<LoginState> {
+  double marginH = 30;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("123"),
+        title: Text("登录"),
         // toolbarHeight: 40,
       ),
       body: Column(
@@ -44,34 +46,61 @@ class _LoginFul extends State<LoginState> {
                 height: 100,
               )),
           Container(
+            margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Text(
               "中星快充",
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(20, 40, 20, 0),
+            margin: EdgeInsets.fromLTRB(marginH, 40, marginH, 0),
             child: TextFormField(
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
-                hintText: '请输入手机号',
-              ),
+                  hintText: '请输入手机号', focusedBorder: InputBorder.none),
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-            child: TextFormField(
-              //https://www.jianshu.com/p/ecf052d56a26
-              // http://events.jianshu.io/p/ad231ab22cee
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: '请输入密码',
+              margin: EdgeInsets.fromLTRB(marginH, 20, marginH, 0),
+              child: TextFormField(
+                //https://www.jianshu.com/p/ecf052d56a26
+                // http://events.jianshu.io/p/ad231ab22cee
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: '请输入密码',
+                  focusedBorder: InputBorder.none,
+                ),
+              )),
+          // 密码框下方
+          Row(
+            //https://www.jianshu.com/p/d9b5fd16c098
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(marginH, 10, 0, 0),
+                    child: Text("还没有账号？"),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                    child: Text(
+                      "立即注册！",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ],
               ),
-            ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 10, marginH, 0),
+                child: Text("忘记密码"),
+              ),
+            ],
           ),
+          //登录按钮
           Container(
-            margin: EdgeInsets.fromLTRB(20, 30, 20, 0),
+            margin: EdgeInsets.fromLTRB(20, 30, 20, 50),
             decoration: BoxDecoration(
               //https://blog.csdn.net/weixin_43120901/article/details/122344646
               gradient: LinearGradient(
@@ -93,6 +122,32 @@ class _LoginFul extends State<LoginState> {
                   elevation: MaterialStateProperty.all(0)),
               onPressed: () {},
             ),
+          ),
+          // 三方登录分割线
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                height: 1,
+                width: 80,
+                color: Colors.grey,
+              ),
+              Text(
+                "第三方登录方式",
+                style: TextStyle(color: Colors.grey),
+              ),
+              Container(
+                height: 1,
+                width: 80,
+                color: Colors.grey,
+              ),
+            ],
+          ),
+          Image.asset(
+            'image/icon64_wx_logo.png',
+            width: 100,
+            height: 100,
           )
         ],
       ),
