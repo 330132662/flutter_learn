@@ -32,7 +32,7 @@ class _LoginFul extends State<LoginState> {
     return Scaffold(
       appBar: AppBar(
         title: Text("登录"),
-        // toolbarHeight: 40,
+        toolbarHeight: 0,
       ),
       body: Column(
         //https://blog.csdn.net/chuyouyinghe/article/details/118419569
