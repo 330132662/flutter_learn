@@ -6,7 +6,14 @@ A new Flutter project.
 #### flutter 2.8.1
 ##  笔记
 Container -- child -- row/column -- children -- 回到Cotainer
+flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
 
+flutter build apk --obfuscate --split-debug-info=splitMap
+
+
+
+finally
+ flutter build apk --target-platform android-arm64 --obfuscate --split-debug-info=splitMap
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
