@@ -26,6 +26,8 @@ class LoginState extends StatefulWidget {
 
 class _LoginFul extends State<LoginState> {
   double marginH = 30;
+  TextEditingController phoneCtrl = TextEditingController(text: '');
+  TextEditingController passwordCtrl = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,7 @@ class _LoginFul extends State<LoginState> {
             margin: EdgeInsets.fromLTRB(marginH, 40, marginH, 0),
             child: TextFormField(
               keyboardType: TextInputType.phone,
+              controller: phoneCtrl,
               decoration: InputDecoration(
                   hintText: '请输入手机号', focusedBorder: InputBorder.none),
             ),
@@ -64,6 +67,7 @@ class _LoginFul extends State<LoginState> {
           Container(
               margin: EdgeInsets.fromLTRB(marginH, 20, marginH, 0),
               child: TextFormField(
+                controller: passwordCtrl,
                 //https://www.jianshu.com/p/ecf052d56a26
                 // http://events.jianshu.io/p/ad231ab22cee
                 obscureText: true,
@@ -120,7 +124,9 @@ class _LoginFul extends State<LoginState> {
                       side: BorderSide(
                           style: BorderStyle.solid, color: Colors.blue))),*/
                   elevation: MaterialStateProperty.all(0)),
-              onPressed: () {},
+              onPressed: () {
+                loginReq();
+              },
             ),
           ),
           // 三方登录分割线
@@ -152,5 +158,9 @@ class _LoginFul extends State<LoginState> {
         ],
       ),
     );
+  }
+
+  void loginReq() {
+    print("手机号" + phoneCtrl.text + "," + passwordCtrl.text);
   }
 }
