@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const LoginPage());
@@ -28,6 +32,11 @@ class _LoginFul extends State<LoginState> {
   double marginH = 30;
   TextEditingController phoneCtrl = TextEditingController(text: '');
   TextEditingController passwordCtrl = TextEditingController(text: '');
+
+  /**
+   *  用于接收 请求函数返回的数据
+   */
+  // late Future<LoginMEntity> loginResp;
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +169,24 @@ class _LoginFul extends State<LoginState> {
     );
   }
 
-  void loginReq() {
+  Future<void> loginReq() async {
     print("手机号" + phoneCtrl.text + "," + passwordCtrl.text);
+    var url = Uri.parse('http://chn.sdzxkc.com/api/user/login');
+    http.Response response = await http.post(url,
+        body: {'account': phoneCtrl.text, 'password': passwordCtrl.text});
+    // print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    String body = response.body;
+    Map<String, dynamic> jsonBody = jsonDecode(body);
+    var token = jsonBody['data']['userinfo']['token'];
+
+    if (response.statusCode == 0) {
+      print("登录成功: " + token);
+      //   登录成功
+      // final prefs = await SharedPreferences.getInstance();
+      // prefs.setString("token", token);
+    }
+
+    // print(await http.read(Uri.parse('https://example.com/foobar.txt')));
   }
 }
